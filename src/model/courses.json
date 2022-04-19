@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "SMM",
+        "type": "Bootcamp",
+        "description": "SMM kursi",
+        "price": "1500000",
+        "teacherId": 3,
+        "teacher": "Sardor"
+    },
+    {
+        "id": 2,
+        "name": "Design",
+        "type": "Bootcamp",
+        "description": "Moushn grafika kursi",
+        "price": "2000000",
+        "teacherId": 2,
+        "teacher": "Mahmud"
+    }
+]

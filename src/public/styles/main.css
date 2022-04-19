@@ -1,0 +1,310 @@
+body {
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: #FDBC00;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000;
+}
+
+.main-wrapper {
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: #000;
+}
+
+.sidebar-list {
+    width: 100%;
+    list-style-type: none;
+}
+
+.sidebar-item {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.active {
+    background-color: #fff;
+    color: #000;
+    box-shadow: -25px 2px 24px -5px rgba(0, 0, 0, 0.67) inset;
+}
+
+.sidebar-icon {
+    margin-right: 10px;
+}
+
+.content {
+    width: 100%;
+}
+
+
+
+.content-wrapper {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.content-active {
+    display: block;
+}
+
+.content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.content-body {
+    width: 100%;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 5px;
+    border: transparent;
+    width: 80px;
+    cursor: pointer;
+}
+
+.add-task {
+    background-color: #000;
+    color: #fff;
+    border: transparent;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+.view-btn {
+    background-color: #000;
+    color: #fff;
+    border: transparent;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: #f2f2f2;
+}
+
+.table {
+    width: 100%;
+    text-align: center;
+}
+
+th {
+    background-color: #FDBC00;
+    padding: 10px;
+    font-size: 20px;
+}
+
+td {
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.edit-button {
+    background-color: transparent;
+    margin-right: 10px;
+    border: transparent;
+    color: #000;
+    cursor: pointer;
+}
+
+.delete-button {
+    border: transparent;
+    background-color: transparent;
+    color: #000;
+    cursor: pointer;
+}
+
+.add-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.705);
+}
+
+.add-box {
+    width: 400px;
+    background-color: #fff;
+}
+
+.add-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+}
+
+.close-button {
+    background-color: transparent;
+    border: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.add-body {
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.input-wrapper {
+    padding: 5px;
+}
+
+.input-wrapper>label {
+    display: block;
+    font-size: 18px;
+
+}
+
+textarea {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    padding: 5px;
+}
+
+.input-wrapper>input[type="text"], 
+.input-wrapper>input[type="number"], 
+.input-wrapper>input[type="password"] {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    margin-top: 5px;
+}
+
+.input-wrapper>select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    margin-top: 5px;
+}
+
+.form-add-btn {
+    display: block;
+    margin: 10px 10px 0 auto;
+    background-color: #FDBC00;
+    padding: 8px;
+    border: transparent;
+    width: 80px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.task-description {
+    width: 100%;
+    height: 100px;
+}
+
+
+[type="file"] {
+    color: #878787;
+}
+
+[type="file"]::-webkit-file-upload-button {
+    margin-top: 10px;
+    background: #FDBC00;
+    border: 2px solid #FDBC00;
+    border-radius: 4px;
+    color: #000;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    transition: all 1s ease;
+}
+
+[type="file"]::-webkit-file-upload-button:hover {
+    background: #fff;
+    border: 2px solid #535353;
+    color: #000;
+}
+
+.edit-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.705);
+}
+
+.edit-box {
+    position: relative;
+    top: 0;
+    left: 100%;
+    width: 350px;
+    height: 100%;
+    background-color: #fff;
+    animation-name: slide-in;
+    animation-duration: 0.5s;
+}
+
+.edit-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-header > button {
+    color: #000;
+}
+
+.edit-body {
+    padding: 10px;
+}
+
+@keyframes slide-in {
+    0% {
+        left: calc(100% - 50px);
+    }
+    100% {
+        left: calc(100% - 350px);
+    }
+}

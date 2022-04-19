@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "goupId": 2,
+        "homework": "Video tayyorlash",
+        "description": "youtubega 4k video jo'natish",
+        "file": "01e3d82942602d65fa0195f6a009fb10.png",
+        "path": "/uploads/01e3d82942602d65fa0195f6a009fb10.png"
+    },
+    {
+        "id": 2,
+        "goupId": 1,
+        "homework": "photoshop",
+        "description": "photoshopda rasm tayyorlash",
+        "file": "ebf8fbd947d20b11d4595fbd1c945a6c (1).png",
+        "path": "/uploads/ebf8fbd947d20b11d4595fbd1c945a6c (1).png"
+    }
+]

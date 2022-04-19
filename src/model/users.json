@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "username": "admin",
+        "password": "admin",
+        "role": "admin",
+        "phone": "123456789"
+    },
+    {
+        "id": 2,
+        "username": "Mahmud",
+        "phone": "915151007",
+        "password": "123456789",
+        "role": "teacher",
+        "courseId": 2,
+        "course": "Design"
+    },
+    {
+        "id": 3,
+        "username": "Sardor",
+        "phone": "902487962",
+        "password": "020214",
+        "role": "teacher",
+        "courseId": 1,
+        "course": "SMM"
+    },
+    {
+        "id": 4,
+        "username": "Safar",
+        "phone": "904104995",
+        "password": "120201",
+        "role": "student",
+        "course": "Design",
+        "groupId": 1,
+        "group": "N-1"
+    },
+    {
+        "id": 5,
+        "username": "Eshmat",
+        "phone": "902667957",
+        "password": "12030201",
+        "role": "student",
+        "course": "SMM",
+        "groupId": 2,
+        "group": "N-2"
+    }
+]

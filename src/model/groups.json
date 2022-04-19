@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "N-1",
+        "course": "Design",
+        "teacher": "Mahmud",
+        "teacherId": 2,
+        "type": "Bootcamp"
+    },
+    {
+        "id": 2,
+        "name": "N-2",
+        "course": "SMM",
+        "teacher": "Sardor",
+        "teacherId": 3,
+        "type": "Bootcamp"
+    }
+]

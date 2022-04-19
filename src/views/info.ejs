@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="sidebar">
+            <ul class="sidebar-list">
+                <li class="sidebar-item active" id="Groups">
+                    <span class="material-icons sidebar-icon">
+                        groups
+                    </span>
+                    Groups
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="content-wrapper content-active">
+                <div class="content-header">
+                    <h2>Groups</h2>
+                </div>
+                <div class="content-body">
+                    <table class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Teacher
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                    Task
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let group of studentGroup) { %>
+                            <tr>
+                                <td>
+                                    <%= group.name %>
+                                </td>
+                                <td>
+                                    <%= group.teacher %>
+                                </td>
+                                <td>
+                                    <%= group.type %>
+                                </td>
+                                <td>
+                                    <%= group.task %>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

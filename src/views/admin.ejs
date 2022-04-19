@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <%- include('header') -%>
+    <div class="main-wrapper">
+        <div class="sidebar">
+            <ul class="sidebar-list">
+                <li class="sidebar-item active" id="Teachers">
+                    <span class="material-icons sidebar-icon">
+                        person
+                    </span>
+                    Teachers
+                </li>
+                <li class="sidebar-item" id="Students">
+                    <span class="material-icons sidebar-icon">
+                        people
+                    </span>
+                    Students
+                </li>
+                <li class="sidebar-item" id="Groups">
+                    <span class="material-icons sidebar-icon">
+                        groups
+                    </span>
+                    Groups
+                </li>
+                <li class="sidebar-item" id="Courses">
+                    <span class="material-icons sidebar-icon">
+                        menu_book
+                    </span>
+                    Courses
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="content-wrapper content-active" id="teachers">
+                <div class="content-header">
+                    <h2>Teachers</h2>
+                    <button class="add-button" id="addTeacher">
+                        <span class="material-icons">
+                            add
+                        </span>
+                        Add
+                    </button>
+                </div>
+                <div class="content-body">
+                    <table class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Course
+                                </th>
+                                <th>
+                                    Phone
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < users.length; i++) {
+                                if(users[i].role == 'teacher') { %>
+                            <tr>
+                                <td>
+                                    <%= users[i].username %>
+                                </td>
+                                <td>
+                                    <%= users[i].course %>
+                                </td>
+                                <td>
+                                    <%= users[i].phone %>
+                                </td>
+                                <td>
+                                    <button id="edit-teacher/<%= users[i].id %>" class="edit-button">
+                                        <span class="material-icons">
+                                            edit
+                                        </span>
+                                    </button>
+                                    <button id="delete-teacher/<%= users[i].id %>" class="delete-button">
+                                        <span class="material-icons">
+                                            delete
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <% }} %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-wrapper" id="students">
+                <div class="content-header">
+                    <h2>Students</h2>
+                    <button class="add-button" id="addStudent">
+                        <span class="material-icons">
+                            add
+                        </span>
+                        Add
+                    </button>
+                </div>
+                <div class="content-body">
+                    <table class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Course
+                                </th>
+                                <th>
+                                    Group
+                                </th>
+                                <th>
+                                    Phone
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < users.length; i++) {
+                                if(users[i].role == 'student') { %>
+                            <tr>
+                                <td>
+                                    <%= users[i].username %>
+                                </td>
+                                <td>
+                                    <%= users[i].course %>
+                                </td>
+                                <td>
+                                    <%= users[i].group %>
+                                </td>
+                                <td>
+                                    <%= users[i].phone %>
+                                </td>
+                                <td>
+                                    <button id="edit-student/<%= users[i].id %>" class="edit-button">
+                                        <span class="material-icons">
+                                            edit
+                                        </span>
+                                    </button>
+                                    <button id="delete-student/<%= users[i].id %>" class="delete-button">
+                                        <span class="material-icons">
+                                            delete
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <% }} %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-wrapper" id="groups">
+                <div class="content-header">
+                    <h2>Groups</h2>
+                    <button class="add-button" id="addGroup">
+                        <span class="material-icons">
+                            add
+                        </span>
+                        Add
+                    </button>
+                </div>
+                <div class="content-body">
+                    <table class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Teacher
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < groups.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= groups[i].name %>
+                                </td>
+                                <td>
+                                    <%= groups[i].teacher %>
+                                </td>
+                                <td>
+                                    <%= groups[i].type %>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-wrapper" id="courses">
+                <div class="content-header">
+                    <h2>Courses</h2>
+                    <button class="add-button" id="addCourse">
+                        <span class="material-icons">
+                            add
+                        </span>
+                        Add
+                    </button>
+                </div>
+                <div class="content-body">
+                    <table class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Teachers
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < courses.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= courses[i].name %>
+                                </td>
+                                <td>
+                                    <%= courses[i].teacher %>
+                                </td>
+                                <td>
+                                    <%= courses[i].description %>
+                                </td>
+                                <td>
+                                    <%= courses[i].price %>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="add-wrapper">
+        <div class="add-box" id="add-teacher">
+            <div class="add-header">
+                <h2>Add teacher</h2>
+                <button class="close-button">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </button>
+            </div>
+            <div class="add-body">
+                <form action="/teacher" method="POST">
+                    <div class="input-wrapper">
+                        <label for="name">
+                            Name
+                        </label>
+                        <input type="text" name="username" placeholder="Name" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="phone">
+                            Telephone
+                        </label>
+                        <input type="number" name="phone" placeholder="Phone" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="password">
+                            Password
+                        </label>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="course">
+                            Course
+                        </label>
+                        <select name="courseId" required>
+                            <% for(let i = 0; i < courses.length; i++) { %>
+                            <option value="<%= courses[i].id %>">
+                                <%= courses[i].name %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <button class="form-add-btn" type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="add-box" id="add-student">
+            <div class="add-header">
+                <h2>Add student</h2>
+                <button class="close-button">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </button>
+            </div>
+            <div class="add-body">
+                <form action="/student" method="POST" enctype="application/x-www-form-urlencoded">
+                    <div class="input-wrapper">
+                        <label for="name">
+                            Name
+                        </label>
+                        <input type="text" name="username" placeholder="Name" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="phone">
+                            Telephone
+                        </label>
+                        <input type="number" name="phone" placeholder="Phone" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="password">
+                            Password
+                        </label>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="group">
+                            Group
+                        </label>
+                        <select name="groupId" required>
+                            <% for(let i = 0; i < groups.length; i++) { %>
+                            <option value="<%= groups[i].id %>">
+                                <%= groups[i].name %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <button class="form-add-btn" type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="add-box" id="add-group">
+            <div class="add-header">
+                <h2>Add group</h2>
+                <button class="close-button">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </button>
+            </div>
+            <div class="add-body">
+                <form action="/group" method="POST" enctype="application/x-www-form-urlencoded">
+                    <div class="input-wrapper">
+                        <label for="name">
+                            Name
+                        </label>
+                        <input type="text" name="groupName" placeholder="Name" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="course">
+                            Course
+                        </label>
+                        <select name="course" id="selectCourse" required>
+                            <% for(let i = 0; i < courses.length; i++) { %>
+                            <option value="<%= courses[i].id %>">
+                                <%= courses[i].name %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="teacher">
+                            Teacher
+                        </label>
+                        <select name="teacherId" id="selectTeacher" required>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="Type">
+                            Type
+                        </label>
+                        <select name="type" required>
+                            <option value="Standart">
+                                Standart
+                            </option>
+                            <option value="Bootcamp">
+                                Bootcamp
+                            </option>
+                        </select>
+                    </div>
+                    <button class="form-add-btn" type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="add-box" id="add-course">
+            <div class="add-header">
+                <h2>Add course</h2>
+                <button class="close-button">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </button>
+            </div>
+            <div class="add-body">
+                <form action="/course" method="POST" enctype="application/x-www-form-urlencoded">
+                    <div class="input-wrapper">
+                        <label for="name">
+                            Name
+                        </label>
+                        <input type="text" name="courseName" placeholder="Name" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="type">
+                            Type
+                        </label>
+                        <select name="type" required>
+                            <option value="Standart">
+                                Standart
+                            </option>
+                            <option value="Bootcamp">
+                                Bootcamp
+                            </option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="description">
+                            Description
+                        </label>
+                        <textarea name="courseDescription" placeholder="Description" required></textarea>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="price">
+                            Price
+                        </label>
+                        <input type="text" name="price" placeholder="Price" required>
+                    </div>
+                    <button class="form-add-btn" type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="edit-wrapper">
+        <div class="edit-box">
+            <div class="edit-header">
+                <h2>Edit</h2>
+                <button class="close-button">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </button>
+            </div>
+            <div class="edit-body">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const sidebarItem = document.querySelectorAll('.sidebar-item');
+    const contentWrapper = document.querySelectorAll('.content-wrapper');
+    const teachers = document.getElementById('teachers');
+    const students = document.getElementById('students');
+    const groups = document.getElementById('groups');
+    const courses = document.getElementById('courses');
+    const addButton = document.querySelectorAll('.add-button');
+    const addWrapper = document.querySelector('.add-wrapper');
+    const addBox = document.querySelectorAll('.add-box');
+    const closeButton = document.querySelectorAll('.close-button');
+    const selectCourse = document.getElementById('selectCourse');
+    const selectTeacher = document.getElementById('selectTeacher');
+    const editBtn = document.querySelectorAll('.edit-button');
+    const deleteBtn = document.querySelectorAll('.delete-button');
+    const editWrapper = document.querySelector('.edit-wrapper');
+    const editBody = document.querySelector('.edit-body');
+
+    selectCourse.addEventListener('change', () => {
+        fetch('/teachers/' + selectCourse.value)
+            .then(response => response.json())
+            .then(data => {
+                selectTeacher.innerHTML = '';
+                for (let i = 0; i < data.length; i++) {
+                    let option = document.createElement('option');
+                    option.value = data[i].id;
+                    option.innerHTML = data[i].username;
+                    selectTeacher.appendChild(option);
+                }
+            })
+    });
+    
+    sidebarItem.forEach(item => {
+        item.addEventListener('click', () => {
+            if(item.id === 'Teachers') {
+                teachers.style.display = 'block';
+                students.style.display = 'none';
+                groups.style.display = 'none';
+                courses.style.display = 'none';
+            } else if(item.id === 'Students') {
+                teachers.style.display = 'none';
+                students.style.display = 'block';
+                groups.style.display = 'none';
+                courses.style.display = 'none';
+            } else if(item.id === 'Groups') {
+                teachers.style.display = 'none';
+                students.style.display = 'none';
+                groups.style.display = 'block';
+                courses.style.display = 'none';
+            } else if(item.id === 'Courses') {
+                teachers.style.display = 'none';
+                students.style.display = 'none';
+                groups.style.display = 'none';
+                courses.style.display = 'block';
+            }
+            sidebarItem.forEach(item => {
+                item.classList.remove('active');
+            });
+            item.classList.add('active');
+        });
+    });
+
+    addButton.forEach(item => {
+        item.addEventListener('click', () => {
+            addWrapper.style.display = 'flex';
+        });
+        if(item.id === 'addTeacher') {
+            item.addEventListener('click', () => {
+                addBox.forEach(item => {
+                    item.style.display = 'none';
+                });
+                document.getElementById('add-teacher').style.display = 'block';
+            });
+        }
+        if(item.id === 'addStudent') {
+            item.addEventListener('click', () => {
+                addBox.forEach(item => {
+                    item.style.display = 'none';
+                });
+                document.getElementById('add-student').style.display = 'block';
+            });
+        }
+        if(item.id === 'addGroup') {
+            item.addEventListener('click', () => {
+                addBox.forEach(item => {
+                    item.style.display = 'none';
+                });
+                document.getElementById('add-group').style.display = 'block';
+            });
+        }
+        if(item.id === 'addCourse') {
+            item.addEventListener('click', () => {
+                addBox.forEach(item => {
+                    item.style.display = 'none';
+                });
+                document.getElementById('add-course').style.display = 'block';
+            });
+        }
+    });
+
+    editBtn.forEach(item => {
+        item.addEventListener('click', () => {
+            editWrapper.style.display = 'block';
+            document.querySelector('.edit-box').style.left = 'calc(100% - 350px)';
+
+            fetch('/users/' + item.id)
+                .then(response => response.json())
+                .then(data => {
+                    editBody.innerHTML = '';
+                    let form = document.createElement('form');
+                    form.action = '/users/' + item.id;
+                    form.method = 'POST';
+                    form.innerHTML = `
+                        <div class="input-wrapper">
+                            <label for="username">
+                                Username
+                            </label>
+                            <input type="text" name="username" value="${data.username}" required>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="password">
+                                Password
+                            </label>
+                            <input type="text" name="password" value="${data.password}" required>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="phone">
+                                Phone
+                            </label>
+                            <input type="text" name="phone" value="${data.phone}" required>
+                        </div>
+                        <button class="form-add-btn" type="submit">
+                            Save
+                        </button>
+                        `;
+                    editBody.appendChild(form);
+                })
+        })
+    })
+
+    deleteBtn.forEach(item => {
+        item.addEventListener('click', () => {
+            fetch('/users/' + item.id, {
+                method: 'DELETE'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === "success") {
+                        item.parentElement.parentElement.remove();
+                    }
+                })
+                window.location.reload();
+        })
+    })
+
+    closeButton.forEach(item => {
+        item.addEventListener('click', () => {
+            addWrapper.style.display = 'none';
+            editWrapper.style.display = 'none';
+        });
+    });
+
+    editWrapper.addEventListener('click', (e) => {
+        if(e.currentTarget === e.target) {
+            editWrapper.style.display = 'none';
+        }
+    });
+    
+    addWrapper.addEventListener('click', (e) => {
+        if(e.currentTarget === e.target) {
+            addWrapper.style.display = 'none';
+        }
+    });
+    
+</script>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+    <%- include('header') -%>
+    <div class="main-wrapper">
+        <div class="sidebar">
+            <ul class="sidebar-list">
+                <li class="sidebar-item active" id="Groups">
+                    <span class="material-icons sidebar-icon">
+                        groups
+                    </span>
+                    Groups
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="content-wrapper content-active">
+                <div class="content-header">
+                    <h2>Groups</h2>
+                </div>
+                <div class="content-body">
+                    <table class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Teacher
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                    Task
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let group of studentGroup) { %>
+                            <tr>
+                                <td>
+                                    <%= group.name %>
+                                </td>
+                                <td>
+                                    <%= group.teacher %>
+                                </td>
+                                <td>
+                                    <%= group.type %>
+                                </td>
+                                <td>
+                                    <button class="view-btn" id="<%= group.id %>">View</button>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="add-wrapper">
+        <div class="add-box">
+            <div class="add-header">
+                <h2>Homework</h2>
+                <button class="close-button">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </button>
+            </div>
+            <div class="add-body">
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const viewBtn = document.querySelectorAll('.view-btn');
+    const addWrapper = document.querySelector('.add-wrapper');
+    const closeButton = document.querySelector('.close-button');
+    const addBody = document.querySelector('.add-body');
+
+    viewBtn.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            addWrapper.style.display = 'flex';
+            const id = e.target.id;
+            
+            fetch(`/homework/group/${id}`)
+                .then(res => res.json())
+                .then(data => {
+                    addBody.innerHTML = data.map(homework => {
+                        return `
+                            <div class="homework-item">
+                                <h3>${homework.homework}</h3>
+                                <p>${homework.description}</p>
+                                <img src="${homework.path}" alt="homework-img" width="360" />
+                            </div>
+                        `
+                    }).join('');
+                })
+                .catch(err => console.log(err));
+
+            });
+    });
+
+    closeButton.addEventListener('click', () => {
+        addWrapper.style.display = 'none';
+    });
+
+    addWrapper.addEventListener('click', (e) => {
+        if (e.target.classList.contains('add-wrapper')) {
+            addWrapper.style.display = 'none';
+        }
+    });
+
+</script>
+
+</html>
